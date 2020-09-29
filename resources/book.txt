@@ -1,0 +1,3 @@
+Kathy_Sierra,_Bert_Bates Head_First._Java._2nd_edition Eksmo 717 46.66 false
+Брюс_Эккель Thinking_in_Java Питер 1168 79.65 true
+Стивен_Кинг It АСТ 1245 36.11 true

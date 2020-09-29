@@ -1,9 +1,12 @@
 User1 Password1 true
-
 cat 123 false
-
 cat1 123 false
-
 cat2 123 false
-
-cat3 123 false
+cat3 123 true
+cat4 123 false
+cat5 123 false
+cat6 123 false
+cat7 123 false
+cat8 123 false
+cat9 123 true
+admin admin true

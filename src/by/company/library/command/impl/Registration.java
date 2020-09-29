@@ -18,9 +18,13 @@ public class Registration implements Command {
 
 			String password = splittedRequest[2];
 
-			ServiceFactory.getInstance().getUserService().registration(login, password);
+			if (ServiceFactory.getInstance().getUserService().registration(login, password)) {
+				response = "Registration successfull";	
+			} else {
+				response = "user with this login exists";
+			}
 
-			response = "Registration successfull";
+			
 
 		} catch (ServiceException | ArrayIndexOutOfBoundsException e) {
 			response = "Error registration";

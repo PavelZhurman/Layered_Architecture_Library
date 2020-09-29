@@ -19,8 +19,8 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, String publishingHouse, int numberOfPages, boolean forAdults,
-			double price) {
+	public Book(String title, String author, String publishingHouse, int numberOfPages, double price,
+			boolean forAdults) {
 		this.title = title;
 		this.author = author;
 		this.publishingHouse = publishingHouse;
@@ -132,6 +132,12 @@ public class Book {
 			return false;
 
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + " [title=" + title + ", author=" + author + ", publishingHouse=" + publishingHouse
+				+ ", numberOfPages=" + numberOfPages + ", forAdults=" + forAdults + ", price=" + price + "]";
 	}
 
 }

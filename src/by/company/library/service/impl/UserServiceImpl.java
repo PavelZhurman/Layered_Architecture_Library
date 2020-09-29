@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService {
 		UserDao userDAO = daoFactory.getUserDAO();
 
 		try {
+			if (!(userDAO.findUserByLogin(login))) {
 			registrationSuccess = userDAO.registerUser(login, password);
-
+			}
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 
@@ -59,6 +60,32 @@ public class UserServiceImpl implements UserService {
 		}
 		return loggedUser;
 
+	}
+
+	@Override
+	public boolean changeUserRole(String user, String newUserRole, String accessRole) throws ServiceException {
+		boolean result = false;
+		// parameters validation
+		if (user == null || user.isBlank()) {
+			throw new ServiceException("there is no information about who to change the role");
+		}
+		if (newUserRole == null || newUserRole.isBlank()) {
+			throw new ServiceException("no information about the new role");
+		}
+		if (accessRole == null || accessRole.isBlank() || accessRole.equals("false")) {
+			throw new ServiceException("no access to change roles");
+		}
+		
+		
+		DAOFactory daoFactory = DAOFactory.getInstance();
+		try {
+			result = daoFactory.getUserDAO().changeUserRole(user, newUserRole);
+		} catch (DAOException e) {
+			throw new ServiceException (e);
+		}
+		
+
+		return result;
 	}
 
 }

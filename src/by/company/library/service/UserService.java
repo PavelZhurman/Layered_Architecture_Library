@@ -6,4 +6,5 @@ import by.company.library.service.exception.ServiceException;
 public interface UserService {
 	User logination(String login, String password) throws ServiceException;
 	boolean registration (String login, String password) throws ServiceException;
+	boolean changeUserRole (String user, String newUserRole, String accessRole) throws ServiceException;
 }

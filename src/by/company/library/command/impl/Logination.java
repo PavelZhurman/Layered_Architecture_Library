@@ -28,7 +28,7 @@ public class Logination implements Command {
 
 			if (user != null) {
 
-				response = "logged: " + user.getLogin() + ", is user Adult? " + user.getisAdult();
+				response = "logged: " + user.getLogin() + " Adult? " + user.getisAdult();
 			} else {
 				response = "Error logination";
 			}

@@ -77,4 +77,9 @@ public class User {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return getClass().getName() + " [login=" + login + ", password=" + password + ", isAdult=" + isAdult + "]";
+	}
+
 }
