@@ -19,7 +19,7 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, String publishingHouse, int numberOfPages, double price,
+	public Book(String author, String title, String publishingHouse, int numberOfPages, double price,
 			boolean forAdults) {
 		this.title = title;
 		this.author = author;
