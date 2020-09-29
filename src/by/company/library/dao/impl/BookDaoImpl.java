@@ -17,6 +17,13 @@ public class BookDaoImpl implements BookDao {
 
 	private final String BOOK_FILE_PATH = "resources\\book.txt";
 
+	private final int AUTHOR_ID = 0;
+	private final int TITLE_ID = 1;
+	private final int PUBLISHING_HOUSE_ID = 2;
+	private final int NUMBER_OF_PAGES_ID = 3;
+	private final int PRICE_ID = 4;
+	private final int FOR_ADULTS_ID = 5;
+
 	@Override
 	public boolean addBook(Book book) throws DAOException {
 		boolean result = false;
@@ -33,7 +40,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public Book findBookByTitle(String title, boolean isUserAdult) throws DAOException {
+	public Book findBookByTitle(String title) throws DAOException {
 		Book book = null;
 		String line;
 		String[] splittedLine;
@@ -51,11 +58,11 @@ public class BookDaoImpl implements BookDao {
 
 				splittedLine = line.split("\\s+");
 
-				if (splittedLine[1].equals(title) && Boolean.parseBoolean(splittedLine[5]) == isUserAdult) {
+				if (splittedLine[TITLE_ID].equals(title)) {
 
-					book = new Book(splittedLine[0], splittedLine[1], splittedLine[2],
-							Integer.parseInt(splittedLine[3]), Double.parseDouble(splittedLine[4]),
-							Boolean.parseBoolean(splittedLine[5]));
+					book = new Book(splittedLine[AUTHOR_ID], splittedLine[TITLE_ID], splittedLine[PUBLISHING_HOUSE_ID],
+							Integer.parseInt(splittedLine[NUMBER_OF_PAGES_ID]), Double.parseDouble(splittedLine[PRICE_ID]),
+							Boolean.parseBoolean(splittedLine[FOR_ADULTS_ID]));
 
 					return book;
 				}
@@ -95,7 +102,7 @@ public class BookDaoImpl implements BookDao {
 				splittedLine = line.split("\\s+");
 				if (!(splittedLine[1].equals(title))) {
 					temp.add(line);
-					
+
 				} else {
 					result = true;
 				}

@@ -44,15 +44,24 @@ public class BookServiceImpl implements UpdateLibraryService {
 
 		DAOFactory daoFactory = DAOFactory.getInstance();
 		try {
-			book = daoFactory.getBookDAO().findBookByTitle(title, isUserAdult);
+			
+			book = daoFactory.getBookDAO().findBookByTitle(title);
 			if (book == null) {
 				throw new ServiceException("Book not found");
 			}
+			
+			if (book.getForAdults() == isUserAdult) {
+				return book;
+			} else {
+				throw new ServiceException("This user can't read this book");
+			}
+			
+			
 		} catch (DAOException e) {
 			throw new ServiceException("An error occurred while finding the book");
 		}
 
-		return book;
+		
 	}
 
 	@Override
