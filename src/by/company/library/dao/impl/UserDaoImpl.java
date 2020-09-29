@@ -55,8 +55,8 @@ public class UserDaoImpl implements UserDao {
 
 				String[] parametres = line.split("\\s+");
 
-				if (parametres[0].equals(login) && parametres[1].equals(password)) {
-					if (parametres[2].equals("false")) {
+				if (parametres[USER_ID].equals(login) && parametres[PASSWORD_ID].equals(password)) {
+					if (parametres[ROLE_ID].equals("false")) {
 						return new User(parametres[USER_ID], parametres[PASSWORD_ID], false);
 					} else {
 						return new User(parametres[USER_ID], parametres[PASSWORD_ID], true);
